@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { useSpeechSynthesis } from 'react-speech-kit';
+import { useNavigate } from 'react-router-dom';
 
 const Test = () => {
-    const text='hello';
-    const  {speak}=useSpeechSynthesis();
-    useEffect(() => {
-      console.log("speaking");
-      setTimeout(function(){
-        speak({text:text});
-      },1000)
-      console.log("speak");
-      }, [])
+  const text='Hello Ayush';
+  const  {speak}=useSpeechSynthesis();
+const navigate = useNavigate();
+const handleClick = () => {
+  navigate('/other');
+  speak({text:text});
+}
+
   return (
     <div>
-      {text}
+      "Hello Ayush Jain"
+      <button style={{ cursor: 'pointer'}} onClick={handleClick}>Click on me</button>
     </div>
   )
 }
